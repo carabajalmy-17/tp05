@@ -8,9 +8,18 @@ const { leerJSON } = require('./archivos');
 
 const PORT = 3000;
 
+const rutaArchivo = path.join(__dirname, '..', 'datos', 'mascotas.json');
+let numeroDeSolicitud = 0;
+
+function identificarSolicitud (req, res, next){
+    numeroDeSolicitud += 1;
+    res.locals.solicitudId = `SOL-${String(numeroDeSolicitud).padStart(4, "0")}`;
+    next();
+}
+
+
 async function main() {
     try {
-        const rutaArchivo = path.join(__dirname, '..', 'datos', 'mascotas.json');
 
         const mascotas = await leerJSON(rutaArchivo);
 
