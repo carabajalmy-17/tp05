@@ -1,5 +1,7 @@
 const express = require('express');
 const path = require('node:path');
+const morgan = require("morgan");
+
 const expressLayouts = require('express-ejs-layouts');
 const { leerJSON } = require('./archivos');
 
